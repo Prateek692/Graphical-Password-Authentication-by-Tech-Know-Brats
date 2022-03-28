@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    {% load static %}
+
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=McLaren&display=swap);
+
+        body {
+            font-family: 'McLaren';
+            font-style: normal;
+            font-weight: 200;
+            margin: 0px;
+            background: #46344E;
+        }
+        h1{
+            color: #FAED26;
+        }
+        p{
+            color: #FAED26;
+        }
+        ul{
+            list-style-type: none;
+            color: #FAED26;
+        }
+        label{
+            color: #9D8D8F;
+            font-size:15px;
+            font-weight: bolder;
+        }
+        .btn{
+            color: #FAED26;
+            border-color: #FAED26;
+        }
+        .btn:hover{
+            color: black;
+            background-color: #FAED26;
+        }
+        a{
+            color: #FAED26;
+        }
+        a:hover{
+            color: red;
+        }
+        legend{
+            color: #FAED26;
+        }
+    </style>
+
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top" >
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static "images/lock.png" %}" width="50" height="50" class="d-inline-block align-top">
+            Graphical Password Authentication(By Team Tech-Know-Brats)
+        </a>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+
+            {% if request.user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>

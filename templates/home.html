@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+
+{% block content %}
+<h1>Hi There  {{ request.user.username }}</h1>
+<h1>Are you logged in?: {{request.user.is_authenticated}}</h1>
+<br>
+<br>
+<p>
+    Depending on your login status, you will see login/logout button at the top right.
+    <br>
+    <br>
+    Login: &nbsp&nbsp&nbspTo continue logging in
+    <br>
+    Logout: To log out of the system
+</p>
+<section class="instructions">
+    <h1>How to Use:</h1>
+    <ul>
+        <li>1. First of all, create an user-id by clicking on Register button at top-right corner of navigation bar.</li>
+        <li>2. Fill in all details asked and choose a pattern for graphic password.</li>
+        <li>3. Click on SignUp Button.</li>
+        <li>4. After successful creation of ID, you'll be redirected to homepage. Then click on login button at top-right corner of navigation bar to log in.</li>
+        <li>5. Enter your username and select boxes for graphic password. Selected boxes won't be highlighted due to security reasons.</li>
+        <li>6. After successful login, you'll be redirected to home page showing your username. Otherwise, you'll get an error message telling that your graphic password is incorrect.</li>
+    </ul>
+</section>
+{% endblock %}
